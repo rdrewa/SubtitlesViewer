@@ -4,5 +4,8 @@
     <string name="app_name">SubtitlesViewer</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="btnFindSubtitles">Znajdź napisy</string>
+    <string name="txtHint">Miejsce na odnalezione napisy</string>
+    <string name="title_activity_subtitles">SubtitlesActivity</string>
 
 </resources>
