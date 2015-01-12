@@ -4,14 +4,34 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.TextView;
 
 
 public class SubtitlesActivity extends ActionBarActivity {
+
+    private TextView txtFileName, txtStatus;
+    private ListView lstSubtitles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subtitles);
+        txtFileName = (TextView) findViewById(R.id.txtFileName);
+        txtStatus = (TextView) findViewById(R.id.txtStatus);
+        lstSubtitles = (ListView) findViewById(R.id.lstSubtitles);
+        Bundle extras = getIntent().getExtras();
+        String fileName = extras.getString(MainActivity.SUBTITLE_NAME);
+        String filePath = extras.getString(MainActivity.SUBTITLE_PATH);
+        txtFileName.setText(fileName);
+        SubtitleProcessorTask subtitleProcessor = new SubtitleProcessorTask();
+        subtitleProcessor.setTxtIndicator(txtStatus);
+        subtitleProcessor.setInfoStart(getString(R.string.info_processor_start));
+        subtitleProcessor.setInfoStop(getString(R.string.info_processor_stop));
+        subtitleProcessor.setFilePath(filePath);
+        subtitleProcessor.setLstSubtitles(lstSubtitles);
+        subtitleProcessor.setContext(this);
+        subtitleProcessor.execute();
     }
 
 

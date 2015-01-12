@@ -1,5 +1,6 @@
 package pl.nemolab.subtitlesviewer;
 
+import android.content.Intent;
 import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -21,6 +22,8 @@ import java.util.Map;
 
 public class MainActivity extends ActionBarActivity {
 
+    public static String SUBTITLE_NAME = "SUBTITLE_NAME";
+    public static String SUBTITLE_PATH = "SUBTITLE_PATH";
     private Button btnFindSubtitles;
     private ListView lstFoundSubtitles;
     private List<String> fileList = new ArrayList<String>();
@@ -38,6 +41,10 @@ public class MainActivity extends ActionBarActivity {
                 String fileName = fileList.get(position);
                 String filePath = fileMap.get(fileName);
                 Toast.makeText(getApplicationContext(), fileName + "\n" + filePath, Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), SubtitlesActivity.class);
+                intent.putExtra(SUBTITLE_NAME, fileName);
+                intent.putExtra(SUBTITLE_PATH, filePath);
+                startActivity(intent);
             }
         });
     }

@@ -7,5 +7,7 @@
     <string name="btnFindSubtitles">Znajdź napisy</string>
     <string name="txtHint">Miejsce na odnalezione napisy</string>
     <string name="title_activity_subtitles">SubtitlesActivity</string>
+    <string name="info_processor_start">Wczytywanie napisów...</string>
+    <string name="info_processor_stop">Wczytywanie zakończone ;)</string>
 
 </resources>
